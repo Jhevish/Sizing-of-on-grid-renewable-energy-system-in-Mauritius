@@ -1,3 +1,5 @@
+#This is one of my favourite project which i did when I was in my last year of my BEng (Hons) Electrical and Electronic Engineering
+
 # Overview
 A specific location is picked, one that is located at L'aventure in the Flacq district and has coordinates of -20.153786° and 057.678401°. In order to determine a system, the load variations and energy consumption are quoted from the proper sources and extrapolated to forecast future demand. A site assessment will provide information on environmental conditions such as temperature, solar energy, wind speed, and other factors. Through that , the selected system has been modelled and simulated using the NREL System Advisor Model (SAM). To determine the most feasible solution, the findings are analyzed, and performance and financial assessment are examined.
 
@@ -147,3 +149,220 @@ N_{s \, max} \leq \frac{V_{in \, max}}{V_{oc \, max}}
 - \( \beta \): Temperature coefficient of open circuit voltage.
 - \( T_{min} \): Minimum ambient temperature.
 - \( T_{STC} \): Temperature at Standard Test Conditions.
+
+### Sizing Requirement 2:
+
+The array minimum voltage should not drop below the inverter’s DC input voltage due to degradation in hot temperatures:
+
+\[
+V_{oc \, Array \, min} > V_{inv \, min}
+\]
+
+The **minimum** power point voltage \( V_{mpp \, min} \) can be calculated using the formula:
+
+\[
+V_{mpp \, min} = V_{m} \left( 1 + \beta \left( T_{max} + T_{adder} - T_{STC} \right) \right)
+\]
+
+Where:
+- \( V_{mpp \, min} \): Module Maximum Power Point (MPP) voltage at high temperatures.
+- \( V_{m} \): Module MPP voltage at Standard Test Conditions (STC).
+- \( \beta \): Temperature coefficient of open circuit voltage.
+- \( T_{max} \): Maximum ambient temperature on-site.
+- \( T_{adder} \): Temperature adder (25°C).
+- \( T_{STC} \): Temperature at Standard Test Conditions.
+
+The **minimum** number of modules \( N_{s \, min} \) connected in series is given by:
+
+\[
+N_{s \, min} \geq \frac{V_{inv \, min}}{V_{mpp \, min}}
+\]
+
+Where:
+- \( N_{s \, min} \): Minimum number of modules in series.
+- \( V_{inv \, min} \): Minimum DC input voltage of the inverter.
+
+### Sizing Requirement 3:
+
+The maximum short circuit current \( I_{sc-array-max} \) should not exceed the inverter maximum input current \( I_{inv-max} \).
+
+\[
+I_{sc-array-max} < I_{inv-max}
+\]
+
+\[
+I_{sc-string-max} = I_m \times \left( \frac{S}{S_{stc}} \right) \times \left( 1 + T_{\alpha} \left( T_{max} + T_{adder} - T_{stc} \right) \right)
+\]
+
+The number of strings in parallel \( N_p \) is given by:
+
+\[
+N_p \leq \frac{I_{inv-max}}{I_m \times \left( \frac{S}{S_{stc}} \right) \times \left( 1 + T_{\alpha} \left( T_{max} + T_{adder} - T_{stc} \right) \right)}
+\]
+
+
+#### Definitions:
+- \( I_{sc-string-max} \): Maximum short circuit current of the string. The string current is the same as the maximum module short circuit current due to the series connection in the string.
+- \( S \): Maximum irradiance at the site of the chosen entity.
+- \( S_{stc} \): Irradiance at standard test conditions.
+- \( I_m \): Module current at standard test conditions.
+- \( T_{\alpha} \): Temperature coefficient of short circuit current.
+
+
+### Sizing Requirement 4:
+
+The number of parallel strings to be connected can be found by considering the maximum input DC power of the inverter and the total DC power of the string array.
+
+\[
+P_{dc (array max)} \leq P_{dc (inv max)}
+\]
+
+\[
+P_{dc string max} = P_m N_p \left( \frac{S_{max}}{S_{STC}} \right) \times \left( 1 + \gamma \left( T_{max} + T_{adder} - T_{STC} \right) \right)
+\]
+
+\[
+N_p \leq \frac{P_{inv max}}{P_{string max}}
+\]
+
+#### Definitions:
+- \( P_m \): Maximum power of module at STC.
+- \( \gamma \): Temperature coefficient of power.
+- \( P_{dc string max} \): DC power through each string.
+
+---
+
+Different systems were designed, taking into consideration cost, efficiency, and space availability, and the most appropriate one was chosen. Two weather files were extracted and chosen from SAM software: year 2018 and 2019. The 2018 one was chosen for system design 1 and 2, and the remaining designs catered for 2019. Since the allowable power range is below 15 MW, the systems are adjusted to obtain a capacity range of \( 14 < \text{capacity} < 15 \text{ MW} \).
+
+## Design system 1
+The inverter is manufactured in China and as an AC output of 116kW.
+
+![image](https://github.com/user-attachments/assets/b87417e1-cf5e-40d9-9d30-64da88964dd5)
+
+Fig 4: 116kW inverter (ENF Ltd., 2022)
+
+### Specifications Table
+
+| **Specifications**               | **Values**     |
+|----------------------------------|----------------|
+| Max. DC Voltage                  | 1500 V         |
+| Nominal DC Voltage               | 1080 V         |
+| Min. DC Voltage to Start Feed In | 650 V          |
+| Max. DC Current                  | 150 A          |
+| MPP(T) Voltage Range             | 600-1500 V     |
+| No. of MPP Trackers              | 6              |
+| Efficiency                       | 98.8%          |
+| Max. AC Power                    | 116 kW         |
+| Nominal AC Power                 | 116 kW         |
+| Nominal AC Voltage               | 800 V          |
+| Max. AC Current                  | 86.6 A         |
+| Cost                             | Rs             |
+
+**Table 4: Specifications Table**
+
+
+The panel is manufactured in China and the 340 Wp is selected.
+
+![image](https://github.com/user-attachments/assets/f9a0fcbc-4825-45c4-aab9-64b929fa6531)
+
+Fig 5: 340 W PV panel (ENF Ltd., 2022)
+
+### Specifications Table
+
+| **Specifications**              | **Values**        |
+|---------------------------------|-------------------|
+| Maximum Power (Pmax)            | 340 Wp            |
+| Voltage at Maximum Power (Vmpp)  | 37.84 V           |
+| Current at Maximum Power (Impp)  | 8.95 A            |
+| Open Circuit Voltage (Voc)       | 44.95 V           |
+| Short Circuit Current (Isc)      | 9.75 A            |
+| Panel Efficiency                 | 17.53 %           |
+| **Panel Dimension (H/W/D)**      | **1956x992x40 mm**|
+| **Cell Number**                  | **72**            |
+| **Temperature Coefficient of Pmax** | **-0.47%/°C**  |
+| **Temperature Coefficient of Voc**  | **-0.346%/°C** |
+| **Temperature Coefficient of Isc**  | **+0.036%/°C** |
+
+**Table 5: Specifications table**
+
+Calculations for number of panels and inverters were performed on Excel as the values can be altered to match requirements.
+
+### Table 6: Excel Calculations
+
+#### Inverter Specifications
+
+| **Specifications**             | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| No. of inverters                | 126            |           |
+| Min Input Voltage               | 650            | V         |
+| Max Input Voltage               | 1500           | V         |
+| Max Input Current               | 150            | A         |
+| Nominal Output Power            | 116000         | W         |
+| Peak Input Power                | 2200000        | W         |
+| String Connections              | 6              |           |
+
+#### Module Specifications
+
+| **Specifications**             | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| Nominal Module Power            | 340            | W         |
+| Module Short Circuit Current    | 9.75           | A         |
+| MPP Current                     | 8.95           | A         |
+| MPP Voltage                     | 37.84          | V         |
+| Open Circuit Voltage            | 44.95          | V         |
+| MIN # of Panels per String      | 13             |           |
+| MAX # of Panels per String      | 31             |           |
+| MAX # of Strings per MPPT       | 11             |           |
+| Number of Modules per String    | 30             |           |
+| Number of Parallel Strings Used | 1,386          |           |
+| Number of Parallel Strings per MPPT Used | 3     |           |
+
+#### Power and Temperature Calculations
+
+| **Specifications**             | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| String Power Rating             | 10200          | W         |
+| System Power Rating             | 14137200       | W         |
+| Minimum Recorded Temperature    | 17             | °C        |
+| Maximum Recorded Temperature    | 30             | °C        |
+| Maximum Average Irradiance      | 1250           | W/m²      |
+| STC Temperature                 | 25             | °C        |
+| STC Irradiance                  | 1000           | W/m²      |
+| Tadder                          | 25             | °C        |
+
+#### Temperature Coefficients
+
+| **Temperature Coefficient**     | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| Voc Temp Coefficient            | -0.33          | %/°C      |
+| Vm Temp Coefficient             | -0.36          | %/°C      |
+| Isc Temp Coefficient            | 0.1            | %/°C      |
+| Pm Temp Coefficient             | -0.23          | %/°C      |
+
+#### String Voltages and Currents
+
+| **Specifications**             | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| String Voc                      | 1348.5         | V         |
+| String Vm                       | 1135.2         | V         |
+| System Voc at Low Temp          | 1385           | V         |
+| System Vm at High Temp          | 1013           | V         |
+| Max Isc under Max S and High Temp | 38           | A         |
+
+#### Power Calculations
+
+| **Specifications**             | **Values**     | **Units** |
+|---------------------------------|----------------|-----------|
+| Peak Input Power at Max S and Min Temp (Overall) | 179965656 | W         |
+| Peak Power at S Max for Each Inverter | 114264.4825  | W         |
+
+#### Requirements
+
+| **Condition**                  | **Status**     |
+|---------------------------------|----------------|
+| Vocmax < Vdc_max_inverter       | Good           |
+| Vmmin > Vdc_min_inverter        | Good           |
+| Iscmax < Idcmax                 | Good           |
+| Pdcmax < Pdc_max_inverter       | Good           |
+
+**Table 6: Excel Calculations**
