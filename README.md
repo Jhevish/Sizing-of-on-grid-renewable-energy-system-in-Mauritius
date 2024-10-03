@@ -3,8 +3,8 @@
 # Overview
 A specific location is picked, one that is located at L'aventure in the Flacq district and has coordinates of -20.153786° and 057.678401°. In order to determine a system, the load variations and energy consumption are quoted from the proper sources and extrapolated to forecast future demand. A site assessment will provide information on environmental conditions such as temperature, solar energy, wind speed, and other factors. Through that , the selected system has been modelled and simulated using the NREL System Advisor Model (SAM). To determine the most feasible solution, the findings are analyzed, and performance and financial assessment are examined.
 
-#Introduction
-# Sizing-of-on-grid-renewable-energy-system-in-Mauritius
+# Introduction
+## Sizing-of-on-grid-renewable-energy-system-in-Mauritius
 Mauritius has no known coal reserves or oil and is therefore heavily dependent on imported energy resources. The electricity production is characterized by the Central Electricity Board (CEB) and the various Independent Power Producers (IPPs). However, environmental issues have been brought to the surface in relation to the energy policy mainly as a result of global warming, caused by emission of greenhouse gases (UNDP, 2022). Mauritius is situated in the tropics as such benefits from 2900 hours of sunlight per annum. In order to encourage the use of solar energy whether for water heating or electricity production, incentive schemes are devised so as to enable long-term goals to be achieved, addressed by the Renewable Energy Masterplan. CEB provides many schemes such as Net-Metering, Gross-Metering and NetBilling to attract interested parties to adopt energy production from renewable resources. Hence, it is worthwhile to investigate the implementation of a grid-tied PV system under proposed schemes for an entity (Green Growth Knowledge Platform, 2022).
 The national and international economies were impacted by the COVID-19 pandemic in 2020. Global lockdowns predicted delays in project completion and disruptions in the human capital transfer, supply networks, and market for RE technologies. The pandemic's effects were felt in Mauritius and had a corresponding impact on how RE initiatives were carried out.
 The Ministry of Energy and Public Utilities published the Renewable Energy (RE) Roadmap 2030 for the Electricity Sector in 2019 and details how to meet the RE targets of 35% by 2025. To accomplish the goal of 40% RE by 2030, the RE Roadmap took into account the necessary technological investments and included energy options. In contrast to the projected RE objective of 25.2% by 2020, this resulted in an integration of RE of 23.9% in the energy mix.
@@ -366,3 +366,72 @@ Calculations for number of panels and inverters were performed on Excel as the v
 | Pdcmax < Pdc_max_inverter       | Good           |
 
 **Table 6: Excel Calculations**
+
+The weather file was uploaded on the System Advisor Model as a .csv format. Then the inverter and module specifications were added as shown below.
+
+![image](https://github.com/user-attachments/assets/bbb3bc9a-8ebf-4f9f-8c7e-8449cb7ed4a6)
+
+Fig 6: Module entered specifications
+
+![image](https://github.com/user-attachments/assets/b6ce941a-6e88-4b45-a182-521d2a5838de)
+
+Fig 7: Inverter entered specifications
+
+![image](https://github.com/user-attachments/assets/1e1b7c61-1e66-45ea-9d99-15f6c3e390f9)
+
+Fig 8: System sizing
+
+![image](https://github.com/user-attachments/assets/64af00e8-e3e7-427c-b064-c5ca780ba958)
+
+The system matched all the requirements and provided an installed capacity of less than 15MW. It can be noted that the largest yield occurred in the last 2 months which agrees with the data collection of GHI in 2018. The acquired DC to AC ratio is in the range of 0.8-1.
+
+Note: Similar things were done for 3 more designs and only the first two were chosen reliant on their results.
+
+# Analysis and costings
+Only system 1 and 2 will be considered and debated. The voltage output of the systems are 800V and 415 V respectively. They must be stepped up to 22 kV and further stepped up to 66kV. As the distance between the site and the nearest substation is approximately 2.7 km as per Google maps, a high voltage transmission is required to minimize power loss.
+
+## Mounting system for designs
+![image](https://github.com/user-attachments/assets/2b6196b0-1084-4a97-9b0c-5ae717b77b29)
+
+Fig 27 : Mounting system (ENFSolar.com, 2022)
+
+Cost: Rs270/module
+Size : 1970-992mm
+Tilt angle range: 5-60 degrees
+The components of this system are made of high-quality aluminum and pre-assembled with stainless steel fastener. It highlights quick installation delivered by preassembled parts which highly minimizes the installation process.
+• Design 1 requires 41580 mountings which costs Rs 11192420.7 rupees.
+• Design 2 requires 44200 mountings which costs 11897667.6 rupees.
+• Design 3 requires 18504050 rupees for mounting solely.
+• Design 4 requires 56826 mountings which costs 15296309.03 rupees.
+
+## Shadowing and area of systems
+
+The area available is as in the diagram below.
+
+![image](https://github.com/user-attachments/assets/9d96068f-f0b9-43b5-8f58-3a2890c45dc1)
+
+Fig: Site area
+
+The shadowing which is caused by the panel due to the sun is calculated. The solar angle is taken to be 45 degrees in winter as per the sun path diagram. The inclination of the module is taken to be 20 degrees.
+The calculations of row spacing will be the same for both systems since same panels are used.
+
+![image](https://github.com/user-attachments/assets/ad051224-c997-4fc5-ae6f-84870cdbc295)
+
+Figure: Shading calculation
+
+### System Module and Area Comparison
+
+| **Specifications**            | **System 1** | **System 2** |
+|-------------------------------|--------------|--------------|
+| Number of modules              | 41850        | 42120        |
+| Total area of 1 module (m²)    | 2.48412      | 2.48412      |
+| Total area (m²)                | 103960.4     | 104631.1     |
+
+**Table: Comparison of System 1 and System 2**
+
+
+## Cable sizing for designs
+
+The sizing of cables for long distance transmission is performed and the capacity is assumed to be 15MW. The demand factor is equal to 1.
+
+𝐶𝑜𝑛𝑠𝑢𝑚𝑒𝑑 𝑙𝑜𝑎𝑑=𝑡𝑜𝑡𝑎𝑙 𝑙𝑜𝑎𝑑 ×𝑑𝑒𝑚𝑎𝑛𝑑 𝑓𝑎𝑐𝑡𝑜𝑟=15𝑀𝑊
