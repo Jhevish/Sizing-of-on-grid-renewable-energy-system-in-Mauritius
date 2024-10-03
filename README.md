@@ -435,3 +435,85 @@ Figure: Shading calculation
 The sizing of cables for long distance transmission is performed and the capacity is assumed to be 15MW. The demand factor is equal to 1.
 
 𝐶𝑜𝑛𝑠𝑢𝑚𝑒𝑑 𝑙𝑜𝑎𝑑=𝑡𝑜𝑡𝑎𝑙 𝑙𝑜𝑎𝑑 ×𝑑𝑒𝑚𝑎𝑛𝑑 𝑓𝑎𝑐𝑡𝑜𝑟=15𝑀𝑊
+
+According to the CEB, there are two options and the first one is for the 150 mm2 cable. A volage drop of less than 5% means that the derated current outweighs that of the full load.
+
+### Voltage Drop Across Cable
+
+\[
+\text{Voltage drop across cable} = \frac{\sqrt{3} \times \text{current} \times \left( R \cos(\phi) + R \sin(\phi) \right) \times \text{cable length}}{\text{line voltage}} = 2.6\%
+\]
+
+De-rating factor cross link polyethene insulation : 0.97
+As the % voltage drop agrees with the 150mm2 cable theory, it is concluded that it fits the system. The price of the cable per km is Rs 2,500,000 and a total of Rs 6,750,000.
+
+##Air insulated Switch Gear
+
+As per the CEB, costings of switch gears are equal Rs 10000000.
+
+## Transformer sizing
+
+The steps in transformer sizing are as follows:
+1. Add 10% extra load for safety and for future considerations.
+2. Calculate load in MVA
+3. Multiply by de-rated factor
+
+A star to delta transformer is selected which converts 415V to 22KV. The transformers then act as feeders to another step-up transformer of 66 kV. The power factor is assumed as 0.8 and the de-rating factor as 0.9. All calculation are conducted using an excel sheet.
+
+### System 1
+
+
+| **Specifications**                          | **System 1**        |
+|---------------------------------------------|---------------------|
+| Voltage (800V to 22KV) (YnD11)              |                     |
+| Max load in kW                              | 14,081.82           |
+| Power factor                                | 0.866               |
+| Safety of 10%                               | 15,489.9965         |
+| Load in KVA                                 | 17,886.83199        |
+| Derated factor                              | 0.9                 |
+| Tx max Capacity (kW)                        | 19,874.25776        |
+| Tx max Capacity (MVA)                       | 19.87425776         |
+| No. of modules per string                   | 30                  |
+| No. of parallel strings used                | 1,386               |
+| Power per string (KVA)                      | 14.33929131         |
+| No. of parallel strings to be connected Tx  | 700 (User defined)  |
+| Resulted power in (KVA)                     | 10,037.50392        |
+| No. of smaller Tx needed                    | 1.98                |
+| Capacity (KVA)                              | 10,037.50392        |
+| Capacity (MVA)                              | 10.03750392         |
+| Cost (Rs)                                   | 10,037,503.92       |
+
+ Table 14: Transformer Sizing 1
+
+Transformers with 800V input are not readily available therefore, they have to be customized and imported which includes additional costs.
+
+### System 2
+
+### Table 15: Transformer Sizing 2
+
+| **Specifications**                          | **System 2**        |
+|---------------------------------------------|---------------------|
+| Voltage (415V to 22KV) (YnD11)              |                     |
+| Max load in kW                              | 14,264.70           |
+| Power factor                                | 0.866               |
+| Safety of 10%                               | 15,691.1656         |
+| Load in KVA                                 | 18,119.12887        |
+| Derated factor                              | 0.9                 |
+| Tx max Capacity (kW)                        | 20,132.36541        |
+| Tx max Capacity (MVA)                       | 20.13236541         |
+| No. of modules per string                   | 18                  |
+| No. of parallel strings used                | 2,340               |
+| Power per string (KVA)                      | 8.603574961         |
+| No. of parallel strings to be connected Tx  | 1,200 (User defined)|
+| Resulted power in (KVA)                     | 10,324.28995        |
+| No. of smaller Tx needed                    | 1.95                |
+| Capacity (KVA)                              | 10,324.28995        |
+| Capacity (MVA)                              | 10.32428995         |
+| Cost (Rs)                                   | 10,324,289.95       |
+
+Table 15: Transformer sizing 2
+
+In Mauritius, the total pricing for transformers of the order of MVA is Rs 1000000/MVA. (Price of a transformer, 2022)
+Both designs require two transformers as the total power supplied to transformers should not exceed the transformer’s capacity.
+
+The second transformer is a step up 22kv-66kv. It has a pricing of Rs15000000.
